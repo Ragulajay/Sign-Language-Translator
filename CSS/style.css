@@ -135,14 +135,14 @@ body::-webkit-scrollbar-thumb:hover {
   width: 500px;
 }
 
-/* #videoCall {
+#videoCall {
   display: none;
   width: 650px;
   height: 370px;
   border: none;
   overflow: hidden;
   left: 2.5%;
-} */
+}
 
 h5 {
   font-size: 30px;
@@ -257,14 +257,14 @@ button:active {
   display: none;
 }
 
-/* .videoCallBtn {
+.videoCallBtn {
   top: 30%;
   right: 2.5%;
   z-index: 2;
   position: fixed;
   display: none;
   background: blue;
-} */
+}
 
 #status {
   width: 300px;
