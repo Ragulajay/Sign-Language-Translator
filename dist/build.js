@@ -1,23 +1,4 @@
-/* 
-Build.js is the local version of Main.js.
-It handles training, classification, and output of sign language gestures. 
-The reason this file is so large and less readable compared to Main.js is because the Squeeze Net 
-and kNN algorithms are directly pasted here for convenient local running without npm. For a more readable
-version of this file, please visit main.js.
 
-- The Main class is responsible for altering page elements on the user interface such as buttons,
-video elements, etc. It is also handles the training, prediction, and video call features.
-- The PredictionOutput class converts the predicted text passed by Main into text, image, and audio
-output. This class is also responsible for turning a caller's words into speech in video call mode.
-
-Credits:
-The kNN Classifier used for this project was created by Google TensorFlow. 
-The kNN classifier requires the computation of random numbers that is not readily available on JavaScript.
-To accomplish this, the work of Johannes Baagøe on "implementations of Randomness in Javascript" was used.
-Additionally, usage of TensorFlow was learned from Abishek Singh's "alexa-sign-language-translator".
-
-
-*/
 (function () {
     function r(e, n, t) {
         function o(i, f) {
@@ -25704,30 +25685,7 @@ Additionally, usage of TensorFlow was learned from Abishek Singh's "alexa-sign-l
             "./seedrandom": 160
         }],
         154: [function (require, module, exports) {
-            // A port of an algorithm by Johannes Baagøe <baagoe@baagoe.com>, 2010
-            // http://baagoe.com/en/RandomMusings/javascript/
-            // https://github.com/nquinlan/better-random-numbers-for-javascript-mirror
-            // Original work is under MIT license -
-
-            // Copyright (C) 2010 by Johannes Baagøe <baagoe@baagoe.org>
-            //
-            // Permission is hereby granted, free of charge, to any person obtaining a copy
-            // of this software and associated documentation files (the "Software"), to deal
-            // in the Software without restriction, including without limitation the rights
-            // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-            // copies of the Software, and to permit persons to whom the Software is
-            // furnished to do so, subject to the following conditions:
-            // 
-            // The above copyright notice and this permission notice shall be included in
-            // all copies or substantial portions of the Software.
-            // 
-            // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-            // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-            // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-            // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-            // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-            // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-            // THE SOFTWARE.
+           
 
             (function (global, module, define) {
 
@@ -26412,34 +26370,10 @@ Additionally, usage of TensorFlow was learned from Abishek Singh's "alexa-sign-l
 
         }, {}],
         160: [function (require, module, exports) {
-            /*
-            Copyright 2014 David Bau.
-
-            Permission is hereby granted, free of charge, to any person obtaining
-            a copy of this software and associated documentation files (the
-            "Software"), to deal in the Software without restriction, including
-            without limitation the rights to use, copy, modify, merge, publish,
-            distribute, sublicense, and/or sell copies of the Software, and to
-            permit persons to whom the Software is furnished to do so, subject to
-            the following conditions:
-
-            The above copyright notice and this permission notice shall be
-            included in all copies or substantial portions of the Software.
-
-            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-            EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-            MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-            IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-            CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-            TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-            SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-            */
+           
 
             (function (pool, math) {
-                //
-                // The following constants are related to IEEE 754 limits.
-                //
+               
                 var global = this,
                     width = 256, // each RC4 output is 0 <= x < 256
                     chunks = 6, // at least six RC4 outputs for each double

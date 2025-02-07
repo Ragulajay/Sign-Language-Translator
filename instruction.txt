@@ -1,0 +1,3 @@
+npm install 
+npm start
+get localhost url and run browser
