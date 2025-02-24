@@ -97,20 +97,30 @@
         <div id="trainedCardsHolder">
         </div>
 
+
+
         <script>
             document.getElementById("proceedButton").addEventListener("click", function () {
+                // Request camera access
                 navigator.mediaDevices.getUserMedia({ video: true })
-                    .then(stream => {
-                        document.getElementById("video").srcObject = stream;
-                        document.getElementById("welcomeContainer").style.display = "none";
-                        document.getElementById("titleBar").style.display = "block";
-                        document.getElementById("translatorWindow").style.display = "block";
+                    .then(function (stream) {
+                        let videoElement = document.getElementById("video");
+                        if (videoElement) {
+                            videoElement.srcObject = stream;
+                            videoElement.play();
+                        } else {
+                            alert("Video element not found!");
+                        }
                     })
-                    .catch(error => {
-                        alert("Camera access denied. Please allow camera permissions.");
+                    .catch(function (error) {
+                        console.error("Error accessing camera: ", error);
+                        alert("Camera access denied. Please enable it in your browser settings.");
                     });
             });
+
         </script>
+
+
 </body>
 
 </html>
