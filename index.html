@@ -51,74 +51,115 @@
 
 
         <div id="translatorWindow">
-
-
             <div id="initialTrainingHolder">
                 <img src="" alt="checkmark" id="checkmark_startButton" class="checkMark">
-                <button id="startButton" class="trainButton ">Start Gesture</button>
+                <button id="startButton" class="trainButton">Start Gesture</button>
                 <button id="clear_startButton" class="clearButton">Clear</button>
                 <h3 id="counter_startButton" class="counter"></h3>
 
-                <button id="stopButton" class="trainButton ">Stop Gesture</button>
+                <button id="stopButton" class="trainButton">Stop Gesture</button>
                 <button id="clear_stopButton" class="clearButton">Clear</button>
                 <h3 id="counter_stopButton" class="counter"></h3>
                 <img src="" alt="checkmark" id="checkmark_stopButton" class="checkMark">
             </div>
 
-
             <div id="videoHolder" class="videoContainerTrain">
                 <video id="video" class="videoTrain" src='' muted autoplay playsinline></video>
+                <button id="switchCameraButton">Switch Camera</button>
                 <iframe
                     src="https://tokbox.com/embed/embed/ot-embed.js?embedId=f37957b6-0f91-4fc5-90ce-f818cc85b5bf&room=DEFAULT_ROOM&iframe=true"
                     width=650 height=370 allow="microphone; camera" id="videoCall"></iframe>
             </div>
-
-
-            <div id="trainingHolder">
-                <h5 id="add-gesture">Add Gesture</h5>
-                <img src="Images/plus_sign.svg" alt="Plus Sign" id="plus_sign" class="plus_sign animated">
-                <form id="add-word" autocomplete="off">
-                    <input type="text" id="new-word" placeholder="New Gesture Title">
-                    <input type="submit" id="submit-word" value="Add Word &#9658;">
-                </form>
-                <button id="doneRetrain" class="doneRetrain">Done Retraining</button>
-
-                <div id="trainingCommands"></div>
-            </div>
-
-
-            <div id="translationHolder">
-                <div id="translatedCard">
-                </div>
-                <h3 id="translationText">Start Signing!</h3>
-            </div>
         </div>
 
-        <div id="trainedCardsHolder">
+        <div id="trainingHolder">
+            <h5 id="add-gesture">Add Gesture</h5>
+            <img src="Images/plus_sign.svg" alt="Plus Sign" id="plus_sign" class="plus_sign animated">
+            <form id="add-word" autocomplete="off">
+                <input type="text" id="new-word" placeholder="New Gesture Title">
+                <input type="submit" id="submit-word" value="Add Word &#9658;">
+            </form>
+            <button id="doneRetrain" class="doneRetrain">Done Retraining</button>
+
+            <div id="trainingCommands"></div>
         </div>
 
 
+        <div id="translationHolder">
+            <div id="translatedCard">
+            </div>
+            <h3 id="translationText">Start Signing!</h3>
+        </div>
+    </div>
 
-        <script>
-            document.getElementById("proceedButton").addEventListener("click", function () {
-                // Request camera access
-                navigator.mediaDevices.getUserMedia({ video: true })
-                    .then(function (stream) {
-                        let videoElement = document.getElementById("video");
-                        if (videoElement) {
-                            videoElement.srcObject = stream;
-                            videoElement.play();
-                        } else {
-                            alert("Video element not found!");
-                        }
-                    })
-                    .catch(function (error) {
-                        console.error("Error accessing camera: ", error);
-                        alert("Camera access denied. Please enable it in your browser settings.");
-                    });
-            });
+    <div id="trainedCardsHolder">
+    </div>
 
-        </script>
+
+
+    <script>
+        document.getElementById("proceedButton").addEventListener("click", function () {
+            // Request camera access
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    let videoElement = document.getElementById("video");
+                    if (videoElement) {
+                        videoElement.srcObject = stream;
+                        videoElement.play();
+                    } else {
+                        alert("Video element not found!");
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error accessing camera: ", error);
+                    alert("Camera access denied. Please enable it in your browser settings.");
+                });
+        });
+
+        document.getElementById("proceedButton").addEventListener("click", function () {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    let videoElement = document.getElementById("video");
+                    if (videoElement) {
+                        videoElement.srcObject = stream;
+                        videoElement.play();
+                    } else {
+                        alert("Video element not found!");
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error accessing camera: ", error);
+                    alert("Camera access denied. Please enable it in your browser settings.");
+                });
+        });
+
+        let isFrontCamera = true;
+
+        document.getElementById("switchCameraButton").addEventListener("click", function () {
+            isFrontCamera = !isFrontCamera;
+            let constraints = {
+                video: {
+                    facingMode: isFrontCamera ? "user" : "environment"
+                }
+            };
+
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(function (stream) {
+                    let videoElement = document.getElementById("video");
+                    if (videoElement) {
+                        videoElement.srcObject = stream;
+                        videoElement.play();
+                    } else {
+                        alert("Video element not found!");
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error switching camera: ", error);
+                    alert("Unable to switch camera.");
+                });
+        });
+
+    </script>
 
 
 </body>
