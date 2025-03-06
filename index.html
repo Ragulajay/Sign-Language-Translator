@@ -63,6 +63,7 @@
                 <button id="clear_stopButton" class="clearButton">Clear</button>
                 <h3 id="counter_stopButton" class="counter"></h3>
                 <img src="" alt="checkmark" id="checkmark_stopButton" class="checkMark">
+                <button onclick="switchCamera()">Switch Camera</button>
             </div>
 
 
@@ -117,6 +118,29 @@
                         alert("Camera access denied. Please enable it in your browser settings.");
                     });
             });
+
+            let videoElement = document.getElementById("video");
+            let currentFacingMode = "user"; // Default: front camera
+
+            async function startCamera(facingMode) {
+                const constraints = {
+                    video: { facingMode: facingMode }
+                };
+                try {
+                    let stream = await navigator.mediaDevices.getUserMedia(constraints);
+                    videoElement.srcObject = stream;
+                } catch (error) {
+                    console.error("Error accessing camera:", error);
+                }
+            }
+
+            function switchCamera() {
+                currentFacingMode = currentFacingMode === "user" ? "environment" : "user";
+                startCamera(currentFacingMode);
+            }
+
+            // Start with the front camera
+            startCamera(currentFacingMode);
 
         </script>
 
