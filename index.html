@@ -123,6 +123,11 @@
             let currentFacingMode = "user"; // Default: front camera
 
             async function startCamera(facingMode) {
+                // Stop existing tracks to release the camera
+                if (videoElement.srcObject) {
+                    videoElement.srcObject.getTracks().forEach(track => track.stop());
+                }
+
                 const constraints = {
                     video: { facingMode: facingMode }
                 };
@@ -134,13 +139,6 @@
                 }
             }
 
-            function switchCamera() {
-                currentFacingMode = currentFacingMode === "user" ? "environment" : "user";
-                startCamera(currentFacingMode);
-            }
-
-            // Start with the front camera
-            startCamera(currentFacingMode);
 
         </script>
 
