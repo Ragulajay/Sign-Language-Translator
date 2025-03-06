@@ -119,15 +119,10 @@
                     });
             });
 
-            // let videoElement = document.getElementById("video");
-            // let currentFacingMode = "user"; // Default: front camera
+            let videoElement = document.getElementById("video");
+            let currentFacingMode = "environment"; // Default: front camera
 
             async function startCamera(facingMode) {
-                // Stop existing tracks to release the camera
-                if (videoElement.srcObject) {
-                    videoElement.srcObject.getTracks().forEach(track => track.stop());
-                }
-
                 const constraints = {
                     video: { facingMode: facingMode }
                 };
@@ -139,6 +134,13 @@
                 }
             }
 
+            function switchCamera() {
+                currentFacingMode = currentFacingMode === "environment" ? "user" : "environment";
+                startCamera(currentFacingMode);
+            }
+
+            // Start with the front camera
+            startCamera(currentFacingMode);
 
         </script>
 
