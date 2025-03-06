@@ -63,7 +63,7 @@
                 <button id="clear_stopButton" class="clearButton">Clear</button>
                 <h3 id="counter_stopButton" class="counter"></h3>
                 <img src="" alt="checkmark" id="checkmark_stopButton" class="checkMark">
-                <button onclick="switchCamera()">Switch Camera</button>
+                <!-- <button onclick="switchCamera()">Switch Camera</button> -->
             </div>
 
 
@@ -119,28 +119,28 @@
                     });
             });
 
-            let videoElement = document.getElementById("video");
-            let currentFacingMode = "environment"; // Default: front camera
+            // let videoElement = document.getElementById("video");
+            // let currentFacingMode = "environment"; // Default: front camera
 
-            async function startCamera(facingMode) {
-                const constraints = {
-                    video: { facingMode: facingMode }
-                };
-                try {
-                    let stream = await navigator.mediaDevices.getUserMedia(constraints);
-                    videoElement.srcObject = stream;
-                } catch (error) {
-                    console.error("Error accessing camera:", error);
-                }
-            }
+            // async function startCamera(facingMode) {
+            //     const constraints = {
+            //         video: { facingMode: facingMode }
+            //     };
+            //     try {
+            //         let stream = await navigator.mediaDevices.getUserMedia(constraints);
+            //         videoElement.srcObject = stream;
+            //     } catch (error) {
+            //         console.error("Error accessing camera:", error);
+            //     }
+            // }
 
-            function switchCamera() {
-                currentFacingMode = currentFacingMode === "environment" ? "user" : "environment";
-                startCamera(currentFacingMode);
-            }
+            // function switchCamera() {
+            //     currentFacingMode = currentFacingMode === "environment" ? "user" : "environment";
+            //     startCamera(currentFacingMode);
+            // }
 
-            // Start with the front camera
-            startCamera(currentFacingMode);
+            // // Start with the front camera
+            // startCamera(currentFacingMode);
 
         </script>
 
